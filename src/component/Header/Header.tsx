@@ -89,7 +89,7 @@ const Header = () => {
   }, [closeRef, menuRef]);
 
   return (
-    <div className=" container  py-4 m-auto bg-transparent">
+    <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">
         <h1
           onClick={() => redirect("/")}
@@ -114,7 +114,7 @@ const Header = () => {
       </nav>
 
       <div
-        className="  h-[100vh] backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
+        className=" h-[100vh] overflow-hidden backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
         id="full"
         ref={fullRef}
       >

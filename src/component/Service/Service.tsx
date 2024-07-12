@@ -5,7 +5,7 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 
 const Service = () => {
   return (
-    <div className=" h-[80vh] mt-2">
+    <div className="  lg:h-[80vh] my-2">
       <div className=" service-title m-auto flex items-center flex-col my-10">
         <h1 className=" s_title text-[6vw] font-semibold ">WHAT WE OFFER</h1>
       </div>
