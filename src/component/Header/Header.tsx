@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SiClickup } from "react-icons/si";
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
@@ -10,35 +10,43 @@ gsap.registerPlugin(useGSAP);
 
 const Header = () => {
   let items = [
-    <li className=" font-semibold text-xl">
+    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
       <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/">
         Home
       </NavLink>
-    </li>,
-    <li className=" font-semibold text-xl">
+    </h4>,
+    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/products"
       >
         Products
       </NavLink>
-    </li>,
-    <li className=" font-semibold text-xl">
+    </h4>,
+    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/about-us"
       >
         About us
       </NavLink>
-    </li>,
-    <li className=" font-semibold text-xl">
+    </h4>,
+    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/dashboard"
       >
         Dashboard
       </NavLink>
-    </li>,
+    </h4>,
+    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+      <NavLink
+        className={({ isActive }) => (isActive ? "active" : "")}
+        to="/contact-us"
+      >
+        Contact Us
+      </NavLink>
+    </h4>,
   ];
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -80,33 +88,67 @@ const Header = () => {
   }, [closeRef, menuRef]);
 
   return (
-    <div className=" container m-auto bg-transparent">
-      <nav className=" text-[white] navbar flex justify-between" id="nav">
-        <h1 className=" navbar-start text-5xl">
-          {" "}
+    <div className=" container  py-4 m-auto bg-transparent">
+      <nav className="  text-[white] navbar flex justify-between" id="nav">
+        <h1
+          onClick={() => redirect("/")}
+          className=" cursor-pointer flex-1 navbar-start w-[100px] text-5xl"
+        >
           <SiClickup></SiClickup>
         </h1>
-        <h1 className=" navbar-end  text-[30px] font-semibold" ref={menuRef}>
+        <div className=" flex-1 hidden basis-[50%] lg:navbar-center  lg:flex justify-center items-center gap-4">
+          {items}
+        </div>
+        <div className=" flex-1 navbar-end">
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle"
+            >
+              <div className="indicator">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="badge badge-sm indicator-item">8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1
+          className=" cursor-pointer lg:hidden w-auto navbar-end  text-[30px] font-semibold"
+          ref={menuRef}
+        >
           <GiHamburgerMenu />
         </h1>
       </nav>
+
       <div
-        className=" h-full backdrop-filter w-[30%] absolute z-40 right-[-30%] top-0 bg-[#292929]"
+        className="  h-[100vh] backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
         id="full"
         ref={fullRef}
       >
         <div className=" relative w-full">
           <h1
-            className=" w-full right-[-80%] top-3 absolute text-[30px] font-semibold text-[#1a1a1a]"
+            className=" cursor-pointer w-full right-[-80%] top-3 absolute text-[30px] font-semibold text-[#1a1a1a]"
             ref={closeRef}
           >
             <ImCross />
           </h1>
         </div>
-        <div className=" mt-[20%] flex justify-center items-center flex-col gap-[20px]">
-          <h4 className=" font-semibold text-[50px] text-white">Item 1</h4>
-          <h4 className=" font-semibold text-[50px] text-white">Item 2</h4>
-          <h4 className="  font-semibold text-[50px] text-white">Item 3</h4>
+        <div className=" mt-[20%] text-[white]  flex justify-center items-center flex-col gap-[50px]">
+          {items}
         </div>
       </div>
     </div>
