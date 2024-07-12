@@ -17,6 +17,8 @@ body {
   height: 100%;
   width: 100%;
   background-color: #f0f0f0;
+}
+body {
   overflow-x: hidden;
 }
 
@@ -97,5 +99,23 @@ a.active {
 
 .card:hover .card-detail {
   opacity: 1;
-  transform: translateX(200px);
+  transform: translateX(250px);
+}
+
+.popular {
+  background-image: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.2),
+    rgba(26, 26, 26, 0) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ===== String animation  */
+
+#string {
+  height: 200px;
+  width: 100%;
 }

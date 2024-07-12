@@ -4,6 +4,8 @@ import Header from "../../component/Header/Header";
 import Service from "../../component/Service/Service";
 import TopProducts from "../../component/TopProducts/TopProducts";
 import TopKeyboard from "../../component/TopKeyboard/TopKeyboard";
+import PopularBrand from "../../component/PopularBrands/PopularBrand";
+import String from "../../utils/animations/String";
 
 const Home = () => {
   return (
@@ -12,9 +14,12 @@ const Home = () => {
         <Header></Header>
         <Hero></Hero>
       </div>
-
+      <String></String>
       <Service></Service>
+
       <TopKeyboard></TopKeyboard>
+
+      <PopularBrand></PopularBrand>
       {/* <TopProducts></TopProducts> */}
     </div>
   );
