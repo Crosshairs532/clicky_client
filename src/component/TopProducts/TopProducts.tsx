@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import im1 from "../../assets/m2.jpg";
 import { Link, NavLink } from "react-router-dom";
+import { Bars } from "react-loader-spinner";
+import { useGetAllproductsQuery } from "../../redux/features/productApi/productApi";
 
 const TopProducts = () => {
   const [pro, setPro] = useState();
+
   useEffect(() => {
     fetch("../../assets/top.json")
       .then((res) => res.json())

@@ -9,9 +9,12 @@ import d1 from "../../assets/ducky.png";
 import brand3 from "../../assets/bran3.svg";
 import r1 from "../../assets/rk.webp";
 import { IoIosArrowForward } from "react-icons/io";
+import { useGetAllproductsQuery } from "../../redux/features/productApi/productApi";
+import { Bars } from "react-loader-spinner";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
+
 const PopularBrand = () => {
   const popularRef = useRef(null);
   const popularBodyRef = useRef(null);
@@ -29,10 +32,11 @@ const PopularBrand = () => {
       },
     });
   }, []);
+
   return (
-    <div ref={popularBodyRef} className=" min-h-screen container m-auto">
+    <div ref={popularBodyRef} className="   min-h-screen container mx-auto">
       <h1 className="popular text-center text-[10vw]">Popular Brands</h1>
-      <h2 className=" text-[#1a1a1a] my-3 text-center font-semibold text-[2.5vw]">
+      <h2 className=" text-[#1a1a1a]  text-center font-semibold text-[2.5vw]">
         Premium Keyboards
       </h2>
       <p className=" text-wrap w-[50%] m-auto text-[#5e5e5e] text-center">

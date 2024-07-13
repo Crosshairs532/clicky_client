@@ -1,8 +1,4 @@
-import React from "react";
-
-import Header from "../../component/Header/Header";
 import Service from "../../component/Service/Service";
-import TopProducts from "../../component/TopProducts/TopProducts";
 import TopKeyboard from "../../component/TopKeyboard/TopKeyboard";
 import PopularBrand from "../../component/PopularBrands/PopularBrand";
 import String from "../../utils/animations/String";
@@ -14,12 +10,10 @@ const Home = () => {
     <div>
       <String></String>
       <Service></Service>
-      <TopKeyboard></TopKeyboard>
       <PopularBrand></PopularBrand>
+      <TopKeyboard></TopKeyboard>
       <Mechanical></Mechanical>
-
       <Reviews></Reviews>
-      {/* <TopProducts></TopProducts> */}
     </div>
   );
 };
