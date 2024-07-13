@@ -72,11 +72,16 @@ const Header = () => {
     tl.pause();
 
     const handleMenuClick = () => {
+      full.classList.remove("hidden");
+      full.classList.add("block");
+
       tl.play();
     };
 
-    const handleCloseClick = () => {
-      tl.reverse();
+    const handleCloseClick = async () => {
+      await tl.reverse();
+      full.classList.add("hidden");
+      full.classList.remove("block");
     };
 
     menu.addEventListener("click", handleMenuClick);
@@ -89,7 +94,7 @@ const Header = () => {
   }, [closeRef, menuRef]);
 
   return (
-    <div className=" container overflow-x-hidden py-4 m-auto bg-transparent">
+    <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">
         <h1
           onClick={() => redirect("/")}
@@ -114,7 +119,7 @@ const Header = () => {
       </nav>
 
       <div
-        className=" h-[100vh] overflow-hidden backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
+        className=" sidebar hidden h-[100vh] overflow-hidden backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
         id="full"
         ref={fullRef}
       >
@@ -126,7 +131,7 @@ const Header = () => {
             <ImCross />
           </h1>
         </div>
-        <div className=" mt-[20%] text-[white]  flex justify-center items-center flex-col gap-[50px]">
+        <div className=" mt-[20%] text-[white] flex justify-center items-center flex-col gap-[50px]">
           {items}
         </div>
       </div>
