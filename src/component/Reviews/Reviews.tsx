@@ -20,7 +20,15 @@ export default function App() {
 
   return (
     <>
-      <div className=" container mx-auto">
+      <div className=" container mx-auto min-h-[80vh] my-[50px] lg:my-[100px]">
+        <div className=" space-y-4 mb-[70px] lg:mb-[100px]">
+          <h1 className=" popular text-center font-semibold text-9xl text-[#1a1a1a]">
+            Reviews
+          </h1>
+          <p className=" text-center text-xl text-[#5e5e5e]">
+            See what our customer says About us!!
+          </p>
+        </div>
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
@@ -36,10 +44,10 @@ export default function App() {
               <div className=" cursor-pointer group w-full h-[300px] bg-[#1c2d5f]">
                 <div className="flex flex-col w-full justify-center items-center h-full">
                   <div className=" relative overflow-hidden flex-1 w-full h-[50%] review_img">
-                    <div className=" z-10 overlay absolute w-full h-full top-0 left-0 bg-[#1c2d5f6d]"></div>
+                    <div className=" z-10 overlay absolute w-full h-full top-0 left-0 bg-[#1c2d5f57]"></div>
                     <img
                       className=" -z-10 group-hover:scale-110 duration-300 w-full h-full object-fill object-center"
-                      src="https://www.startech.com.bd/image/cache/catalog/keyboard/gamdias/hermes-e2/hermes-e2-01-500x500.jpg"
+                      src={review.img}
                       alt=""
                     />
                     <div className=" absolute bottom-2 right-3 z-20 rating">
