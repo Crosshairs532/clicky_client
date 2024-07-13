@@ -119,7 +119,7 @@ const Header = () => {
       </nav>
 
       <div
-        className=" sidebar hidden h-[100vh] overflow-hidden backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
+        className=" sidebar hidden min-h-screen overflow-hidden backdrop-filter w-[100%] lg:w-[30%] absolute z-40 right-[-100%] lg:right-[-30%] top-0 bg-[#292929]"
         id="full"
         ref={fullRef}
       >
