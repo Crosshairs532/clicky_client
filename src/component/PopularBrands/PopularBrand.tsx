@@ -30,7 +30,7 @@ const PopularBrand = () => {
     });
   }, []);
   return (
-    <div ref={popularBodyRef} className="h-[100vh] container m-auto">
+    <div ref={popularBodyRef} className=" min-h-screen container m-auto">
       <h1 className="popular text-center text-[10vw]">Popular Brands</h1>
       <h2 className=" text-[#1a1a1a] my-3 text-center font-semibold text-[2.5vw]">
         Premium Keyboards

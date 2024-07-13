@@ -5,7 +5,7 @@ card = #ffffff
 
 text = #000000
 
-title text  = #1a1a1a
+title text = #1a1a1a
 small text = #5e5e5e
 
 hero = #292929

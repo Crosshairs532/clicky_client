@@ -11,7 +11,7 @@ const MainLayout = () => {
       <div
         className={`bg-[#1a1a1a] ${
           location.pathname === "/" ? "mix-blend-multiply" : ""
-        }  h-[100vh] space-y-6`}
+        }   min-h-screen space-y-6`}
       >
         <Header></Header>
         {location.pathname === "/" ? <Hero></Hero> : ""}

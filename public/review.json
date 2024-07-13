@@ -1,0 +1,27 @@
+[
+  {
+    "customerName": "Customer 1",
+    "number": 1,
+    "review": "Excellent product, highly recommended! The quality is outstanding and it exceeded my expectations."
+  },
+  {
+    "customerName": "Customer 2",
+    "number": 2,
+    "review": "Very satisfied with my purchase. The customer service was top-notch and the delivery was quick."
+  },
+  {
+    "customerName": "Customer 3",
+    "number": 3,
+    "review": "Good value for money. The product performs well and I haven't had any issues so far."
+  },
+  {
+    "customerName": "Customer 4",
+    "number": 4,
+    "review": "Decent product but it took a while to arrive. Overall, happy with the quality and functionality."
+  },
+  {
+    "customerName": "Customer 5",
+    "number": 5,
+    "review": "Amazing experience! The product works as described and the packaging was great."
+  }
+]
