@@ -7,14 +7,23 @@ import {
 
 import { FaStar } from "react-icons/fa";
 import { TiArrowForward } from "react-icons/ti";
+import { useLocation } from "react-router-dom";
 
 const ProductCard = ({ keyboard }) => {
+  const location = useLocation();
+
   return (
     <div key={keyboard?._id}>
-      <Card className="card cursor-pointer mt-2 w-[320px] lg:w-[350px]">
+      <Card
+        className={`card cursor-pointer mt-2 ${
+          location.pathname === "/all-products"
+            ? "w-[280px]"
+            : "w-[320px] lg:w-[350px]"
+        } `}
+      >
         <CardHeader
           color="blue-gray"
-          className="relative h-[200px] overflow-hidden"
+          className=" relative h-[200px] overflow-hidden"
         >
           <img
             className=" h-full w-full object-cover"
@@ -47,7 +56,9 @@ const ProductCard = ({ keyboard }) => {
             </div>
           </div>
           <div className=" flex items-center justify-between w-[120px]">
-            <Typography className=" text-[#5e5e5e]">Ducky</Typography>
+            <Typography className=" text-[#5e5e5e]">
+              {keyboard?.brand}
+            </Typography>
             <h4 className=" text-[#000000]">$2.55</h4>
           </div>
         </CardBody>

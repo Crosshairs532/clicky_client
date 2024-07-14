@@ -16,7 +16,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 }
 body {
   overflow-x: hidden;
@@ -91,15 +91,17 @@ a.active {
   position: absolute;
   z-index: 10;
   display: flex;
-  padding: 2px 10px;
   justify-items: space-between;
   place-items: center;
-  border-radius: 100%;
+  border-radius: 50px 50px 50px 50px;
+  padding: 20px 5px;
+  width: 100px;
+  height: 20px;
 }
 
 .card:hover .card-detail {
   opacity: 1;
-  transform: translateX(250px);
+  transform: translateX(150%);
 }
 
 .popular {
@@ -141,4 +143,30 @@ a.active {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* all product */
+
+.allProduct {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.allProduct::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #5e5e5e;
+  top: 0;
+  gap: 20px;
+}
+.allProduct::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #5e5e5e;
+  bottom: 0;
+  left: 0;
 }

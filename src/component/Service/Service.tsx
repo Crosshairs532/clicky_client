@@ -1,4 +1,3 @@
-import React from "react";
 import { FaShippingFast } from "react-icons/fa";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { RiSecurePaymentFill } from "react-icons/ri";

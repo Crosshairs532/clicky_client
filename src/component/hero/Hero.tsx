@@ -4,8 +4,10 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Heloslider from "./Heloslider";
 import img2 from "../../assets/mechanical.jpg";
-export default function App() {
+import { useLocation } from "react-router-dom";
+export default function Hero() {
   const [count, setCount] = React.useState([1, 2]);
+  const location = useLocation();
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
@@ -17,7 +19,7 @@ export default function App() {
     <>
       <div
         ref={sliderRef}
-        className="keen-slider container mx-auto rounded-xl "
+        className={` keen-slider container mx-auto rounded-xl`}
       >
         {count.map(() => (
           <div className="keen-slider__slide  rounded-xl h-[30vh] md:h-[50vh]  lg:h-[80vh]  w-full ">
