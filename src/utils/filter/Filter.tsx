@@ -1,4 +1,4 @@
-const filter = () => {
+const Filter = () => {
   return (
     <div>
       <svg
@@ -34,4 +34,4 @@ const filter = () => {
   );
 };
 
-export default filter;
+export default Filter;

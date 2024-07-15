@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type TinitialState = {
-  minPrice: number;
-  maxPrice: number;
+  minPrice: number | null;
+  maxPrice: number | null;
   productName: string;
   sort: string;
 };
 
-const initialState: TinitialState = {
+export const initialState: TinitialState = {
   minPrice: 0,
-  maxPrice: 100,
+  maxPrice: 1000,
   productName: "",
   sort: "",
 };
@@ -19,10 +19,11 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     minPrice: (state, { payload }) => {
-      state.minPrice = payload;
+      console.log(payload, "min price");
+      state.minPrice = payload ? payload : 0;
     },
     maxPrice: (state, { payload }) => {
-      state.maxPrice = payload;
+      state.maxPrice = payload ? payload : 0;
     },
     productName: (state, { payload }) => {
       state.productName = payload;
@@ -34,5 +35,4 @@ export const productSlice = createSlice({
 });
 
 export const { minPrice, maxPrice, productName, sort } = productSlice.actions;
-
 export default productSlice.reducer;

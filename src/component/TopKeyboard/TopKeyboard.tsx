@@ -11,7 +11,6 @@ const TopKeyboard = () => {
     return <Loading></Loading>;
   }
 
-  console.log(data);
   return (
     <>
       <div className=" container mx-auto mb-[100px]">

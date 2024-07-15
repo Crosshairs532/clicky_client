@@ -47,7 +47,7 @@ const ProductCard = ({ keyboard }) => {
               color="blue-gray"
               className="mb-1 font-semibold text-[#1a1a1a]"
             >
-              Mechanical Keyboard
+              {keyboard?.title}
             </Typography>
             <div className="rating">
               {Array.from({ length: 5 }, (_, i) => (
@@ -59,7 +59,7 @@ const ProductCard = ({ keyboard }) => {
             <Typography className=" text-[#5e5e5e]">
               {keyboard?.brand}
             </Typography>
-            <h4 className=" text-[#000000]">$2.55</h4>
+            <h4 className=" text-[#000000]">{keyboard?.price}</h4>
           </div>
         </CardBody>
       </Card>

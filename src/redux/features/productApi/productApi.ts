@@ -6,8 +6,7 @@ const productApi = baseApi.injectEndpoints({
       query: (selector) => {
         const param = new URLSearchParams();
         if (selector) {
-          console.log(selector);
-          param.append("selector", selector);
+          param.append("selector", JSON.stringify(selector));
         }
         return {
           url: "/product",
@@ -15,6 +14,7 @@ const productApi = baseApi.injectEndpoints({
           params: param,
         };
       },
+      providesTags: ["product"],
     }),
   }),
 });

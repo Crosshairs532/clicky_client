@@ -1,12 +1,13 @@
 import ProductCard from "../../component/productCard/ProductCard";
 import { useGetAllproductsQuery } from "../../redux/features/productApi/productApi";
 import { TProduct } from "../../Types/Types";
-import Filter from "../../utils/filter/filter";
 import Sort from "./Sort";
-
+import Filter from "../../utils/filter/Filter";
 import Loading from "../../utils/Loading/Loading";
 import AllProductSide from "./AllProductSide";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { useSelect } from "@material-tailwind/react";
+import { useState } from "react";
 
 const AllProducts = () => {
   const selector = useAppSelector((state) => state.product);
@@ -37,7 +38,11 @@ const AllProducts = () => {
         flex  gap-3 mt-[4%]  mx-auto
       container "
       >
-        <AllProductSide dispatch={dispatch}></AllProductSide>
+        <AllProductSide
+          // minPrice={selector.minPrice}
+          // maxPrice={selector.maxPrice}
+          dispatch={dispatch}
+        ></AllProductSide>
         <div className=" products w-[70%] grid md:grid-cols-2 gap-y-6 grid-cols-1 gap-2 lg:grid-cols-3 place-items-center ">
           {data?.map((keyboard: TProduct) => (
             <ProductCard key={keyboard?._id} keyboard={keyboard}></ProductCard>
