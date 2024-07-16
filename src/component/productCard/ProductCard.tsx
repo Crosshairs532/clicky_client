@@ -7,7 +7,7 @@ import {
 
 import { FaStar } from "react-icons/fa";
 import { TiArrowForward } from "react-icons/ti";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ProductCard = ({ keyboard }) => {
   const location = useLocation();
@@ -36,8 +36,10 @@ const ProductCard = ({ keyboard }) => {
             alt=""
           />
           <button className="card-detail">
-            <TiArrowForward></TiArrowForward>
-            see Details
+            <Link to={`/all-products/details/${keyboard._id}`}>
+              <TiArrowForward></TiArrowForward>
+              see Details
+            </Link>
           </button>
         </CardHeader>
         <CardBody className=" px-2 py-4">
