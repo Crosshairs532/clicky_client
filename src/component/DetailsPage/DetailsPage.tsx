@@ -3,20 +3,57 @@ import { useGetSingleProductQuery } from "../../redux/features/productApi/produc
 import Loading from "../../utils/Loading/Loading";
 import { CiStar } from "react-icons/ci";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
-import { addProduct } from "../../redux/features/productApi/cartSlice";
+import {
+  addProduct,
+  updateCart,
+} from "../../redux/features/productApi/cartSlice";
 import { toast } from "sonner";
 
 const DetailsPage = () => {
   const { id } = useParams();
   const { data, isLoading, isError, isFetching } = useGetSingleProductQuery(id);
-  const selector = useAppSelector((state) => state.product);
+  const { cartProducts } = useAppSelector((state) => state.cart);
+
   const dispatch = useAppDispatch();
 
   if (isLoading || isFetching) {
     return <Loading></Loading>;
   }
-  console.log(data);
+  const handleClick = () => {
+    const quantity = data.available_quantity;
+    if (quantity === 0) {
+      return toast.error("product is not available!", {
+        position: "top-center",
+      });
+    }
 
+    const findProduct = cartProducts.filter(
+      (product) => product.id === data?._id
+    );
+
+    console.log(findProduct);
+    if (findProduct.length !== 0) {
+      const updatedCartProducts = cartProducts.map((item) =>
+        item.id === data?._id ? { ...item, total: item.total + 1 } : null
+      );
+      console.log(updatedCartProducts);
+      dispatch(updateCart(updatedCartProducts));
+    } else {
+      dispatch(
+        addProduct({
+          id: data._id,
+          title: data.title,
+          price: data.price,
+          quantity: data.available_quantity,
+          total: 1,
+        })
+      );
+    }
+
+    return toast.success("product added", {
+      position: "top-center",
+    });
+  };
   return (
     <div className=" container mx-auto mt-[60px]">
       <div className=" grid grid-cols-1 gap-9 lg:grid-cols-2">
@@ -46,22 +83,7 @@ const DetailsPage = () => {
             <h2 className=" flex-1 outline w-max px-4 py-2">
               Quantity Available: {data.available_quantity}
             </h2>
-            <button
-              onClick={() => {
-                toast.success("product added", {
-                  position: "top-center",
-                });
-                dispatch(
-                  addProduct({
-                    id: data._id,
-                    title: data.title,
-                    price: data.price,
-                    quantity: data.available_quantity,
-                  })
-                );
-              }}
-              className=" flex-1 outline "
-            >
+            <button onClick={handleClick} className=" flex-1 outline ">
               Add to cart
             </button>
           </div>

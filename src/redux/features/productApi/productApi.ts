@@ -26,6 +26,19 @@ const productApi = baseApi.injectEndpoints({
       },
       // providesTags: ["product"],
     }),
+    updateSingleProduct: builder.mutation({
+      query: ({ data, id }) => {
+        return {
+          url: `/product/single/${id}`,
+          method: "PATCH",
+          data: data,
+        };
+      },
+    }),
   }),
 });
-export const { useGetAllproductsQuery, useGetSingleProductQuery } = productApi;
+export const {
+  useGetAllproductsQuery,
+  useGetSingleProductQuery,
+  useUpdateSingleProductMutation,
+} = productApi;
