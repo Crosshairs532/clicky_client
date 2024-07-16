@@ -17,9 +17,6 @@ const CartDetails = ({ cartRef }) => {
   const dispatch = useAppDispatch();
   console.log(cartProducts);
   useEffect(() => {
-    window.addEventListener("beforeunload", (event) => {
-      event.preventDefault();
-    });
     const tl = gsap.timeline({ paused: true });
     tl.to(cartContainer.current, {
       right: 0,
@@ -101,6 +98,7 @@ const CartDetails = ({ cartRef }) => {
           </div>
         )}
       </div>
+      <div></div>
     </div>
   );
 };

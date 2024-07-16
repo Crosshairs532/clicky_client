@@ -7,10 +7,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import Cart from "../Cart/Cart";
 import Cartdetails from "../Cart/Cartdetails";
+import { useAppSelector } from "../../hook/hook";
 
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
+  const { cartProducts } = useAppSelector((state) => state.cart);
   const cartRef = useRef<HTMLDivElement>(null);
   let items = [
     <h4 className=" cursor-pointer relative font-semibold text-[20px]">
@@ -95,6 +97,14 @@ const Header = () => {
     };
   }, [closeRef, menuRef]);
 
+  useEffect(() => {
+    console.log("loading");
+    if (cartProducts.length > 0) {
+      window.addEventListener("beforeunload", (event) => {
+        event.preventDefault();
+      });
+    }
+  }, [cartProducts.length]);
   return (
     <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">
