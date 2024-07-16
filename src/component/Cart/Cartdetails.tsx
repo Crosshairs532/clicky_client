@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ImCross } from "react-icons/im";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { CiTrash } from "react-icons/ci";
 import {
+  deleteItem,
   minus,
   plus,
   totalItem,
@@ -13,7 +14,7 @@ import {
 const CartDetails = ({ cartRef }) => {
   const cartContainer = useRef(null);
   const cartClose = useRef(null);
-  const { cartProducts } = useAppSelector((state) => state.cart);
+  const { cartProducts, price } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   console.log(cartProducts);
   useEffect(() => {
@@ -35,7 +36,7 @@ const CartDetails = ({ cartRef }) => {
       cartContainer.current?.classList.add("hidden");
       cartContainer.current?.classList.remove("block");
     };
-
+    dispatch(totalItem());
     cartRef.current.addEventListener("click", handleOpenCart);
     cartClose?.current.addEventListener("click", handleCloseCart);
   }, [cartRef]);
@@ -43,7 +44,7 @@ const CartDetails = ({ cartRef }) => {
   return (
     <div
       ref={cartContainer}
-      className="z-50 hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl absolute w-[40%] h-[100%] top-4 right-[-40%]"
+      className="z-50  hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl absolute w-[40%] h-[100%] top-4 right-[-40%]"
     >
       <div
         ref={cartClose}
@@ -58,7 +59,12 @@ const CartDetails = ({ cartRef }) => {
               <div className=" space-y-2 px-4 py-2 bg-[#ffffff] rounded-xl">
                 <div className=" flex items-center justify-between">
                   <h1 className=" text-xl">{product.title}</h1>
-                  <button>
+                  <button
+                    onClick={() => {
+                      dispatch(deleteItem(product.id));
+                      dispatch(totalItem());
+                    }}
+                  >
                     <CiTrash size={25} />
                   </button>
                 </div>
@@ -98,7 +104,11 @@ const CartDetails = ({ cartRef }) => {
           </div>
         )}
       </div>
-      <div></div>
+      <div className="w-full bottom-0 right-0 absolute h-[20%] bg-[#1a1a1a]">
+        <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
+          CheckOut - $ {price.toFixed(2)}
+        </h1>
+      </div>
     </div>
   );
 };
