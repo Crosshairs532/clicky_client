@@ -7,7 +7,7 @@ import { CiTrash } from "react-icons/ci";
 import {
   minus,
   plus,
-  Quantity,
+  totalItem,
 } from "../../redux/features/productApi/cartSlice";
 
 const CartDetails = ({ cartRef }) => {
@@ -17,6 +17,9 @@ const CartDetails = ({ cartRef }) => {
   const dispatch = useAppDispatch();
   console.log(cartProducts);
   useEffect(() => {
+    window.addEventListener("beforeunload", (event) => {
+      event.preventDefault();
+    });
     const tl = gsap.timeline({ paused: true });
     tl.to(cartContainer.current, {
       right: 0,
@@ -52,37 +55,51 @@ const CartDetails = ({ cartRef }) => {
         <ImCross />
       </div>
       <div className="flex mt-10 justify-between flex-col gap-4 p-4">
-        {cartProducts.map((product) => (
-          <>
-            <div className=" space-y-2 px-4 py-2 bg-[#ffffff] rounded-xl">
-              <div className=" flex items-center justify-between">
-                <h1 className=" text-xl">{product.title}</h1>
-                <button>
-                  <CiTrash size={25} />
-                </button>
+        {cartProducts.length > 0 ? (
+          cartProducts?.map((product) => (
+            <>
+              <div className=" space-y-2 px-4 py-2 bg-[#ffffff] rounded-xl">
+                <div className=" flex items-center justify-between">
+                  <h1 className=" text-xl">{product.title}</h1>
+                  <button>
+                    <CiTrash size={25} />
+                  </button>
+                </div>
+                <div className=" w-[15%] border-2 justify-between flex items-center ">
+                  <button
+                    onClick={() => {
+                      dispatch(plus(product.id));
+                      dispatch(totalItem());
+                    }}
+                    className=" "
+                  >
+                    <AiOutlinePlus size={20} />
+                  </button>
+                  <input
+                    className=" text-center w-5 "
+                    value={product?.total}
+                    type="text"
+                  />
+                  <button
+                    onClick={() => {
+                      dispatch(minus(product.id));
+                      dispatch(totalItem());
+                    }}
+                    className=""
+                  >
+                    <AiOutlineMinus size={20} />
+                  </button>
+                </div>
               </div>
-              <div className=" w-[15%] border-2 justify-between flex items-center ">
-                <button
-                  onClick={() => dispatch(plus(product.id))}
-                  className=" "
-                >
-                  <AiOutlinePlus size={20} />
-                </button>
-                <input
-                  className=" text-center w-5 "
-                  value={product?.total}
-                  type="text"
-                />
-                <button
-                  onClick={() => dispatch(minus(product.id))}
-                  className=""
-                >
-                  <AiOutlineMinus size={20} />
-                </button>
-              </div>
-            </div>
-          </>
-        ))}
+            </>
+          ))
+        ) : (
+          <div>
+            <h1 className="text-center text-2xl font-semibold">
+              No products in cart
+            </h1>
+          </div>
+        )}
       </div>
     </div>
   );

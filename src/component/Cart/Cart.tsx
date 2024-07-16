@@ -1,11 +1,14 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { totalItem } from "../../redux/features/productApi/cartSlice";
 
 const Cart = ({ cartRef }) => {
   const dispatch = useAppDispatch();
 
   const { total } = useAppSelector((state) => state.cart);
-  console.log(total);
-
+  useEffect(() => {
+    dispatch(totalItem());
+  }, [total]);
   return (
     <div ref={cartRef} className=" dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

@@ -14,7 +14,6 @@ const productApi = baseApi.injectEndpoints({
           params: param,
         };
       },
-      // providesTags: ["product"],
     }),
     getSingleProduct: builder.query({
       query: (id) => {
@@ -24,7 +23,6 @@ const productApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      // providesTags: ["product"],
     }),
     updateSingleProduct: builder.mutation({
       query: ({ data, id }) => {
