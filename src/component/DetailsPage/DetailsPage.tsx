@@ -5,6 +5,7 @@ import { CiStar } from "react-icons/ci";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import {
   addProduct,
+  totalItem,
   updateCart,
 } from "../../redux/features/productApi/cartSlice";
 import { toast } from "sonner";
@@ -13,7 +14,6 @@ const DetailsPage = () => {
   const { id } = useParams();
   const { data, isLoading, isError, isFetching } = useGetSingleProductQuery(id);
   const { cartProducts } = useAppSelector((state) => state.cart);
-
   const dispatch = useAppDispatch();
 
   if (isLoading || isFetching) {
@@ -33,10 +33,23 @@ const DetailsPage = () => {
 
     console.log(findProduct);
     if (findProduct.length !== 0) {
+      const quantityExceed = cartProducts.find((item) => {
+        if (item.id === data._id) {
+          const newTotal = item.total + 1;
+          if (newTotal > data.available_quantity) {
+            return item;
+          }
+        }
+      });
+      if (quantityExceed) {
+        return toast.error("Quantity Exceeds!", {
+          position: "top-center",
+        });
+      }
+
       const updatedCartProducts = cartProducts.map((item) =>
-        item.id === data?._id ? { ...item, total: item.total + 1 } : null
+        item.id === data?._id ? { ...item, total: item.total + 1 } : item
       );
-      console.log(updatedCartProducts);
       dispatch(updateCart(updatedCartProducts));
     } else {
       dispatch(
@@ -50,6 +63,8 @@ const DetailsPage = () => {
       );
     }
 
+    console.log(cartProducts);
+    dispatch(totalItem());
     return toast.success("product added", {
       position: "top-center",
     });

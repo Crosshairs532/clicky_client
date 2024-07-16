@@ -6,10 +6,12 @@ import { useGSAP } from "@gsap/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import Cart from "../Cart/Cart";
+import Cartdetails from "../Cart/Cartdetails";
 
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
+  const cartRef = useRef<HTMLDivElement>(null);
   let items = [
     <h4 className=" cursor-pointer relative font-semibold text-[20px]">
       <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/">
@@ -61,7 +63,7 @@ const Header = () => {
 
     const tl = gsap.timeline();
     tl.to(fullRef.current, {
-      right: "0",
+      right: 0,
     });
     tl.from(full.querySelectorAll("h4"), {
       x: 50,
@@ -106,7 +108,7 @@ const Header = () => {
           {items}
         </div>
         <div className=" flex-1 gap-4 navbar-end">
-          <Cart></Cart>
+          <Cart cartRef={cartRef}></Cart>
           <div>
             <h1
               className=" cursor-pointer lg:hidden w-auto navbar-end text-[30px] font-semibold"
@@ -135,50 +137,11 @@ const Header = () => {
           {items}
         </div>
       </div>
+      <div className="w-full">
+        <Cartdetails cartRef={cartRef}></Cartdetails>
+      </div>
     </div>
   );
 };
 
 export default Header;
-
-// <div className=" container m-auto pt-5">
-// <div className="navbar bg-transparent text-white">
-//   <div className="navbar-start">
-//     <div className="dropdown">
-//       <div tabIndex={0} role="button" className=" lg:hidden">
-//         <svg
-//           xmlns="http://www.w3.org/2000/svg"
-//           className="h-5 w-5"
-//           fill="none"
-//           viewBox="0 0 24 24"
-//           stroke="currentColor"
-//         >
-//           <path
-//             strokeLinecap="round"
-//             strokeLinejoin="round"
-//             strokeWidth="2"
-//             d="M4 6h16M4 12h8m-8 6h16"
-//           />
-//         </svg>
-//       </div>
-//       <ul
-//         tabIndex={0}
-//         className="menu menu-sm bg-transparent dropdown-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
-//       >
-//         {items}
-//       </ul>
-//     </div>
-//     <div className=" logo ">
-//       <h1 className="text-6xl">
-//         <SiClickup></SiClickup>
-//       </h1>
-//     </div>
-//   </div>
-//   <div className="navbar-center hidden lg:flex">
-//     <ul className="menu menu-horizontal bg-transparent px-1">{items}</ul>
-//   </div>
-//   <div className="navbar-end">
-//     <a className="btn">Button</a>
-//   </div>
-// </div>
-// </div>
