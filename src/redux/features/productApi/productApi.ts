@@ -24,19 +24,21 @@ const productApi = baseApi.injectEndpoints({
         };
       },
     }),
-    updateSingleProduct: builder.mutation({
-      query: ({ data, id }) => {
+    PlaceOrder: builder.mutation({
+      query: (data) => {
+        console.log(data);
         return {
-          url: `/product/single/${id}`,
+          url: `/product/payment`,
           method: "PATCH",
-          data: data,
+          body: data,
         };
       },
+      invalidatesTags: ["product"],
     }),
   }),
 });
 export const {
   useGetAllproductsQuery,
   useGetSingleProductQuery,
-  useUpdateSingleProductMutation,
+  usePlaceOrderMutation,
 } = productApi;

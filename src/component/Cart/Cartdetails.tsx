@@ -10,6 +10,7 @@ import {
   plus,
   totalItem,
 } from "../../redux/features/productApi/cartSlice";
+import { Link } from "react-router-dom";
 
 const CartDetails = ({ cartRef }) => {
   const cartContainer = useRef(null);
@@ -105,9 +106,12 @@ const CartDetails = ({ cartRef }) => {
         )}
       </div>
       <div className="w-full bottom-0 right-0 absolute h-[20%] bg-[#1a1a1a]">
-        <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
-          CheckOut - $ {price.toFixed(2)}
-        </h1>
+        <Link to="/payment">
+          {" "}
+          <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
+            CheckOut - $ {price.toFixed(2)}
+          </h1>
+        </Link>
       </div>
     </div>
   );
