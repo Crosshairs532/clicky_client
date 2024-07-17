@@ -45,7 +45,7 @@ const CartDetails = ({ cartRef }) => {
   return (
     <div
       ref={cartContainer}
-      className="z-50  hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl absolute w-[40%] h-[100%] top-4 right-[-40%]"
+      className="z-50  hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl  absolute w-[40%] h-[calc(100%-16px)] top-4 right-[-40%]"
     >
       <div
         ref={cartClose}
@@ -53,7 +53,7 @@ const CartDetails = ({ cartRef }) => {
       >
         <ImCross />
       </div>
-      <div className="flex mt-10 justify-between flex-col gap-4 p-4">
+      <div className=" h-full  flex mt-10 justify-between flex-col gap-4 p-4">
         {cartProducts.length > 0 ? (
           cartProducts?.map((product) => (
             <>
@@ -98,21 +98,41 @@ const CartDetails = ({ cartRef }) => {
             </>
           ))
         ) : (
-          <div>
+          <div className=" w-full space-y-4 h-full flex flex-col justify-center items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+            </div>
             <h1 className="text-center text-2xl font-semibold">
               No products in cart
             </h1>
+            <button className=" bg-[#1a1a1a] px-9 py-4  text-[#f0f0f0]">
+              <Link to={"/all-products"}> start shopping</Link>
+            </button>
           </div>
         )}
       </div>
-      <div className="w-full bottom-0 right-0 absolute h-[20%] bg-[#1a1a1a]">
-        <Link to="/payment">
-          {" "}
-          <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
-            CheckOut - $ {price.toFixed(2)}
-          </h1>
-        </Link>
-      </div>
+      {cartProducts.length !== 0 && (
+        <div className="w-full bottom-0 right-0 absolute h-[20%] bg-[#1a1a1a]">
+          <Link to="/payment">
+            <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
+              CheckOut - $ {price.toFixed(2)}
+            </h1>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
