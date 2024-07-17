@@ -147,7 +147,7 @@ const Header = () => {
           {items}
         </div>
       </div>
-      <div className="w-full">
+      <div className=" w-full">
         <Cartdetails cartRef={cartRef}></Cartdetails>
       </div>
     </div>

@@ -10,7 +10,10 @@ import { useAppDispatch, useAppSelector } from "../../hook/hook";
 const AllProducts = () => {
   const selector = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
-  const { data, isLoading, isError } = useGetAllproductsQuery(selector);
+  const { data, isLoading, isError } = useGetAllproductsQuery(selector, {
+    pollingInterval: 1000,
+  });
+  console.log(data);
 
   if (isLoading) {
     return <Loading></Loading>;

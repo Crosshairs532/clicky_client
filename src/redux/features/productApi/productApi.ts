@@ -14,6 +14,7 @@ const productApi = baseApi.injectEndpoints({
           params: param,
         };
       },
+      providesTags: ["product"],
     }),
     getSingleProduct: builder.query({
       query: (id) => {
@@ -23,16 +24,14 @@ const productApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["product"],
     }),
     PlaceOrder: builder.mutation({
-      query: (data) => {
-        console.log(data);
-        return {
-          url: `/product/payment`,
-          method: "PATCH",
-          body: data,
-        };
-      },
+      query: (data) => ({
+        url: `/product/payment`,
+        method: "PATCH",
+        body: data,
+      }),
       invalidatesTags: ["product"],
     }),
   }),

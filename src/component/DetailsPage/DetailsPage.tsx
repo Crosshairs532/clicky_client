@@ -9,12 +9,18 @@ import {
   updateCart,
 } from "../../redux/features/productApi/cartSlice";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 const DetailsPage = () => {
   const { id } = useParams();
-  const { data, isLoading, isError, isFetching } = useGetSingleProductQuery(id);
+  const { data, isLoading, isError, isFetching, refetch } =
+    useGetSingleProductQuery(id);
   const { cartProducts } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (isLoading || isFetching) {
     return <Loading></Loading>;

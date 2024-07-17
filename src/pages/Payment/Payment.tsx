@@ -1,27 +1,47 @@
-import { useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdDeliveryDining } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { usePlaceOrderMutation } from "../../redux/features/productApi/productApi";
+import { toast } from "sonner";
+import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { clearCart } from "../../redux/features/productApi/cartSlice";
 
 const Payment = () => {
+  const navigate = useNavigate();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("card");
   const [placeOrder, result] = usePlaceOrderMutation();
-
-  const cartProducts = useSelector((state) => state.cart.cartProducts);
-  const totalPrice = useSelector((state) => state.cart.price);
+  const cartProducts = useAppSelector((state) => state.cart.cartProducts);
+  const totalPrice = useAppSelector((state) => state.cart.price);
+  const dispatch = useAppDispatch();
 
   const handlePaymentMethodChange = (data) => {
     setSelectedPaymentMethod(data);
   };
 
-  const handleOrder = (event) => {
+  const handleOrder = async (event: any) => {
     event.preventDefault();
 
+    const userInfo = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      street: event.target.street.value,
+      city: event.target.city.value,
+      state: event.target.state.value,
+      postal: event.target.postal.value,
+    };
+
+    console.log(userInfo);
     try {
-      placeOrder(cartProducts);
+      const resData = await placeOrder(cartProducts);
+      console.log(resData);
+      console.log(result);
+      if (resData) {
+        toast("Thank You for your purchase");
+        dispatch(clearCart());
+      }
     } catch (error) {
       console.log(error);
+      toast("Error placing order. Please try again.");
     }
   };
 
@@ -44,31 +64,37 @@ const Payment = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                   <input
+                    name="name"
                     type="text"
                     placeholder="Name"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
+                    name="email"
                     type="email"
                     placeholder="Email address"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
+                    name="street"
                     type="text"
                     placeholder="Street address"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
+                    name="city"
                     type="text"
                     placeholder="City"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
+                    name="state"
                     type="text"
                     placeholder="State"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
+                    name="postal"
                     type="number"
                     placeholder="Postal code"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
@@ -186,7 +212,7 @@ const Payment = () => {
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
                   <button
-                    onClick={() => redirect("/")}
+                    onClick={() => navigate("/all-products")}
                     className="order-2 px-6 py-3 border border-gray-300 font-medium tracking-wide text-gray-600 rounded-md hover:bg-gray-200"
                   >
                     Back to Shop

@@ -45,7 +45,7 @@ const CartDetails = ({ cartRef }) => {
   return (
     <div
       ref={cartContainer}
-      className="z-50  hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl  absolute w-[40%] h-[calc(100%-16px)] top-4 right-[-40%]"
+      className="z-50 hidden rounded-lg bg-[#f0f0f065] backdrop-blur-3xl  absolute w-[40%] h-[calc(100%-16px)] top-4 right-[-40%]"
     >
       <div
         ref={cartClose}
