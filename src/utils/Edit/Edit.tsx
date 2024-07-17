@@ -19,8 +19,9 @@ const Edit = ({ item, refetch }: any) => {
   } = useForm();
   const onSubmit = async (data: any) => {
     try {
-      await updateProduct({ id: item?._id, data });
-      if (result.isSuccess) {
+      const res = await updateProduct({ id: item?._id, data });
+      console.log(res);
+      if (res) {
         toast("data updated");
       }
     } catch (error) {
@@ -49,12 +50,11 @@ const Edit = ({ item, refetch }: any) => {
                 <input
                   className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
                   defaultValue={item?.title}
-                  {...register("Name")}
+                  {...register("title")}
                   placeholder="Clicky"
                 />
 
                 <input
-                  value={item?.price}
                   defaultValue={item?.price}
                   className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
                   {...register("price", { required: true })}
@@ -62,7 +62,7 @@ const Edit = ({ item, refetch }: any) => {
                 <input
                   defaultValue={item?.brand}
                   className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
-                  {...register("Brand", { required: true })}
+                  {...register("brand", { required: true })}
                 />
                 {errors.Brand && <span>This field is required</span>}
               </div>

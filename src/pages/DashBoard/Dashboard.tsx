@@ -23,7 +23,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {data?.map((item: any) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <td>{item.title}</td>
                 <td>{item.price}</td>
                 <td>{item.brand}</td>
