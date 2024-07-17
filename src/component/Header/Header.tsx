@@ -104,7 +104,7 @@ const Header = () => {
         event.preventDefault();
       });
     }
-  }, [cartProducts.length]);
+  }, []);
   return (
     <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">

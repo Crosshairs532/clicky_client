@@ -27,11 +27,25 @@ const productApi = baseApi.injectEndpoints({
       providesTags: ["product"],
     }),
     PlaceOrder: builder.mutation({
-      query: (data) => ({
-        url: `/product/payment`,
-        method: "PATCH",
-        body: data,
-      }),
+      query: (data) => {
+        return {
+          url: `/product/payment`,
+          method: "PATCH",
+          body: data,
+        };
+      },
+      invalidatesTags: ["product"],
+    }),
+
+    updateSingleProduct: builder.mutation({
+      query: ({ data, id }) => {
+        console.log(id, "productApi");
+        return {
+          url: `/product/update/${id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
       invalidatesTags: ["product"],
     }),
   }),
@@ -40,4 +54,5 @@ export const {
   useGetAllproductsQuery,
   useGetSingleProductQuery,
   usePlaceOrderMutation,
+  useUpdateSingleProductMutation,
 } = productApi;

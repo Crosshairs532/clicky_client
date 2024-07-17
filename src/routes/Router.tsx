@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import AllProducts from "../pages/AllProducts/AllProducts";
 import DetailsPage from "../component/DetailsPage/DetailsPage";
 import Payment from "../pages/Payment/Payment";
+import Dashboard from "../pages/DashBoard/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/payment",
         element: <Payment></Payment>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
       },
     ],
   },

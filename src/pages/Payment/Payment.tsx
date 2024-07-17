@@ -14,7 +14,7 @@ const Payment = () => {
   const totalPrice = useAppSelector((state) => state.cart.price);
   const dispatch = useAppDispatch();
 
-  const handlePaymentMethodChange = (data) => {
+  const handlePaymentMethodChange = (data: any) => {
     setSelectedPaymentMethod(data);
   };
 
@@ -30,7 +30,6 @@ const Payment = () => {
       postal: event.target.postal.value,
     };
 
-    console.log(userInfo);
     try {
       const resData = await placeOrder(cartProducts);
       console.log(resData);

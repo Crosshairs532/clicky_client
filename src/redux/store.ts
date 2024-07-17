@@ -1,4 +1,4 @@
-import { combineSlices, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import productReducer from "../redux/features/productApi/productSlice";
 import cartReducer from "../redux/features/productApi/cartSlice";
