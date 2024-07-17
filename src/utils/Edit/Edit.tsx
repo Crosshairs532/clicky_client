@@ -8,7 +8,7 @@ import {
 } from "../../redux/features/productApi/productApi";
 import { toast } from "sonner";
 
-const Edit = ({ item, refetch }: any) => {
+const Edit = ({ item }: any) => {
   const [updateProduct, result] = useUpdateSingleProductMutation();
   const { data } = useGetSingleProductQuery(item?._id);
 
