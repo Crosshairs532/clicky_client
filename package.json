@@ -34,6 +34,7 @@
     "sonner": "^1.5.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.11",
+    "sweetalert2": "^11.12.2",
     "swiper": "^11.1.4"
   },
   "devDependencies": {

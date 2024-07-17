@@ -39,9 +39,19 @@ const AllProducts = () => {
       >
         <AllProductSide dispatch={dispatch}></AllProductSide>
         <div className=" products w-[70%] grid md:grid-cols-2 gap-y-6 grid-cols-1 gap-2 lg:grid-cols-3 place-items-center ">
-          {data?.map((keyboard: TProduct) => (
-            <ProductCard key={keyboard?._id} keyboard={keyboard}></ProductCard>
-          ))}
+          {data ? (
+            data?.map(
+              (keyboard: TProduct) =>
+                keyboard.isDeleted == "false" && (
+                  <ProductCard
+                    key={keyboard?._id}
+                    keyboard={keyboard}
+                  ></ProductCard>
+                )
+            )
+          ) : (
+            <h1 className=" text-7xl text-black">no product to show</h1>
+          )}
         </div>
       </div>
     </div>

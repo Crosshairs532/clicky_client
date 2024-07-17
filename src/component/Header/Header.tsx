@@ -15,20 +15,29 @@ const Header = () => {
   const { cartProducts } = useAppSelector((state) => state.cart);
   const cartRef = useRef<HTMLDivElement>(null);
   let items = [
-    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+    <h4
+      id="Home"
+      className=" cursor-pointer relative font-semibold text-[20px]"
+    >
       <NavLink className={({ isActive }) => (isActive ? "active" : "")} to="/">
         Home
       </NavLink>
     </h4>,
-    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+    <h4
+      id="Products"
+      className=" cursor-pointer relative font-semibold text-[20px]"
+    >
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
-        to="/products"
+        to="/all-products"
       >
         Products
       </NavLink>
     </h4>,
-    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+    <h4
+      id="About us"
+      className=" cursor-pointer relative font-semibold text-[20px]"
+    >
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/about-us"
@@ -36,7 +45,10 @@ const Header = () => {
         About us
       </NavLink>
     </h4>,
-    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+    <h4
+      id="Dashboard"
+      className=" cursor-pointer relative font-semibold text-[20px]"
+    >
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/dashboard"
@@ -44,7 +56,10 @@ const Header = () => {
         Dashboard
       </NavLink>
     </h4>,
-    <h4 className=" cursor-pointer relative font-semibold text-[20px]">
+    <h4
+      id="Contact Us"
+      className=" cursor-pointer relative font-semibold text-[20px]"
+    >
       <NavLink
         className={({ isActive }) => (isActive ? "active" : "")}
         to="/contact-us"
