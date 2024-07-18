@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from "../../hook/hook";
+import { useAppSelector } from "../../hook/hook";
 import { useGetAllproductsQuery } from "../../redux/features/productApi/productApi";
 import Edit from "../../utils/Edit/Edit";
 import Delete from "../../utils/Delete/Delete";
-import Loading from "../../utils/Loading/Loading";
+
 import Add from "../../utils/Add/Add";
 
 const Dashboard = () => {

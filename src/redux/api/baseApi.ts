@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BaseFetchQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:2000/api/clicky/",
+  baseUrl: `https://clicky-server.vercel.app/api/clicky/`,
 });
 export const baseApi = createApi({
   reducerPath: "baseApi",
@@ -9,3 +9,5 @@ export const baseApi = createApi({
   tagTypes: ["product"],
   endpoints: () => ({}),
 });
+// baseUrl: `http://localhost:2000/api/clicky/`,
+// baseUrl: `https://clicky-server.vercel.app/api/clicky/`,
