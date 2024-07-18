@@ -22,7 +22,7 @@ const AllProducts = () => {
 
   return (
     <div className=" min-h-screen container mx-auto ">
-      <h1 className=" relative  allProduct container mx-auto mt-[10vh] text-5xl">
+      <h1 className=" relative allProduct container mx-auto mt-[10vh] text-5xl">
         All Products
       </h1>
       <div className=" mt-[10%] text-2xl cursor-pointer justify-between flex items-center gap-3">
@@ -34,11 +34,11 @@ const AllProducts = () => {
       </div>
       <div
         className="
-        flex  gap-3 mt-[4%]  mx-auto
+        lg:flex lg:gap-20 mt-[4%]  mx-auto
       container "
       >
         <AllProductSide dispatch={dispatch}></AllProductSide>
-        <div className=" products w-[70%] grid md:grid-cols-2 gap-y-6 grid-cols-1 gap-2 lg:grid-cols-3 place-items-center ">
+        <div className=" mb-10 mt-[50px]  products lg:w-[70%] place-items-center grid md:grid-cols-2 gap-y-6 grid-cols-1 gap-2 lg:grid-cols-3 ">
           {data ? (
             data?.map(
               (keyboard: TProduct) =>

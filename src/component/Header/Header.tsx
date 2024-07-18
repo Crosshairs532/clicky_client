@@ -12,10 +12,16 @@ import { useAppSelector } from "../../hook/hook";
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
+  const HomeRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const dashboardRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
   const { cartProducts } = useAppSelector((state) => state.cart);
   const cartRef = useRef<HTMLDivElement>(null);
   let items = [
     <h4
+      ref={HomeRef}
       id="Home"
       className=" cursor-pointer relative font-semibold text-[20px]"
     >
@@ -24,6 +30,7 @@ const Header = () => {
       </NavLink>
     </h4>,
     <h4
+      ref={productsRef}
       id="Products"
       className=" cursor-pointer relative font-semibold text-[20px]"
     >
@@ -35,6 +42,7 @@ const Header = () => {
       </NavLink>
     </h4>,
     <h4
+      ref={aboutRef}
       id="About us"
       className=" cursor-pointer relative font-semibold text-[20px]"
     >
@@ -46,6 +54,7 @@ const Header = () => {
       </NavLink>
     </h4>,
     <h4
+      ref={dashboardRef}
       id="Dashboard"
       className=" cursor-pointer relative font-semibold text-[20px]"
     >
@@ -57,6 +66,7 @@ const Header = () => {
       </NavLink>
     </h4>,
     <h4
+      ref={contactRef}
       id="Contact Us"
       className=" cursor-pointer relative font-semibold text-[20px]"
     >
@@ -77,6 +87,11 @@ const Header = () => {
     const menu = menuRef?.current as HTMLDivElement;
     const close = closeRef?.current as HTMLDivElement;
     const full = fullRef?.current as HTMLDivElement;
+    const home = HomeRef?.current as HTMLDivElement;
+    const product = productsRef?.current as HTMLDivElement;
+    const about = aboutRef?.current as HTMLDivElement;
+    const dashboard = dashboardRef?.current as HTMLDivElement;
+    const contact = contactRef?.current as HTMLDivElement;
 
     const tl = gsap.timeline();
     tl.to(fullRef.current, {
@@ -102,6 +117,18 @@ const Header = () => {
       full.classList.add("hidden");
       full.classList.remove("block");
     };
+
+    const navClick = async () => {
+      await tl.reverse();
+      full.classList.add("hidden");
+      full.classList.remove("block");
+    };
+
+    home.addEventListener("click", navClick);
+    product.addEventListener("click", navClick);
+    about.addEventListener("click", navClick);
+    dashboard.addEventListener("click", navClick);
+    contact.addEventListener("click", navClick);
 
     menu.addEventListener("click", handleMenuClick);
     close.addEventListener("click", handleCloseClick);
