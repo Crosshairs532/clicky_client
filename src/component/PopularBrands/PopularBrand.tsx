@@ -9,8 +9,6 @@ import d1 from "../../assets/ducky.png";
 import brand3 from "../../assets/bran3.svg";
 import r1 from "../../assets/rk.webp";
 import { IoIosArrowForward } from "react-icons/io";
-import { useGetAllproductsQuery } from "../../redux/features/productApi/productApi";
-import { Bars } from "react-loader-spinner";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);

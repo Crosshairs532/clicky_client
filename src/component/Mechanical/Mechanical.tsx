@@ -1,4 +1,3 @@
-import React from "react";
 import key_caps from "../../assets/key_caps.webp";
 import mechanical from "../../assets/premium.webp";
 import stylish from "../../assets/stylish.webp";
@@ -6,11 +5,9 @@ import Mvideo from "../../assets/video.mp4";
 
 const Mechanical = () => {
   return (
-    <div className=" bg-[#e5e5e5] relative min-h-screen my-4 p-5 rounded-2xl container mx-auto">
-      <h1 className=" my-4 mg:text-[2xl] lg:text-[5vw]">
-        Why Choose Mechanical keyboard?
-      </h1>
-      <div className=" lg:h-[600px] overflow-hidden flex lg:flex-row flex-col gap-3">
+    <div className=" bg-[#e5e5e5] cursor-pointer relative min-h-screen my-4 p-[3vw] rounded-2xl container mx-auto">
+      <h1 className=" py-4 text-[5vw]">Why Choose Mechanical keyboard?</h1>
+      <div className=" lg:h-[600px] mt-[2vw] overflow-hidden flex lg:flex-row flex-col gap-3">
         <div className=" md:h-[200px] group relative w-full lg:h-[600px] cursor-pointer rounded-2xl bg-black overflow-hidden">
           <video
             src={Mvideo}

@@ -1,17 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SiClickup } from "react-icons/si";
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import Cart from "../Cart/Cart";
 import Cartdetails from "../Cart/Cartdetails";
 import { useAppSelector } from "../../hook/hook";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
 
 const Header = () => {
+  const navigate = useNavigate();
   const HomeRef = useRef<HTMLDivElement>(null);
   const productsRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -133,6 +135,40 @@ const Header = () => {
     menu.addEventListener("click", handleMenuClick);
     close.addEventListener("click", handleCloseClick);
 
+    gsap.fromTo(
+      ".navbar-start",
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+
+    // Animation for cart using GSAP
+    gsap.fromTo(
+      ".navbar-end",
+      { opacity: 0, x: 50 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+
+    gsap.fromTo(
+      ".navbar-end h1",
+      { opacity: 0, rotation: -360 },
+      {
+        opacity: 1,
+        rotation: 0,
+        duration: 1,
+        ease: "power2.out",
+      }
+    );
+
     return () => {
       menu.removeEventListener("click", handleMenuClick);
       close.removeEventListener("click", handleCloseClick);
@@ -151,7 +187,7 @@ const Header = () => {
     <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">
         <h1
-          onClick={() => redirect("/")}
+          onClick={() => navigate("/")}
           className=" cursor-pointer flex-1 navbar-start w-[100px] text-5xl"
         >
           <SiClickup></SiClickup>

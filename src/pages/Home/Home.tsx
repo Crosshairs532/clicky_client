@@ -4,6 +4,7 @@ import PopularBrand from "../../component/PopularBrands/PopularBrand";
 import String from "../../utils/animations/String";
 import Reviews from "../../component/Reviews/Reviews";
 import Mechanical from "../../component/Mechanical/Mechanical";
+import Customizable from "../../component/Customizable/Customizable";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <PopularBrand></PopularBrand>
       <TopKeyboard></TopKeyboard>
       <Mechanical></Mechanical>
+      <Customizable></Customizable>
       <Reviews></Reviews>
     </div>
   );

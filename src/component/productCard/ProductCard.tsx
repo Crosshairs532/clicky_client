@@ -51,17 +51,20 @@ const ProductCard = ({ keyboard }) => {
             >
               {keyboard?.title}
             </Typography>
-            <div className="rating">
-              {Array.from({ length: 5 }, (_, i) => (
-                <FaStar key={i} className="text-yellow-400" />
-              ))}
+            <div className="rating flex  h-full flex-col justify-between">
+              <div className=" flex pt-2">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <FaStar key={i} className="text-yellow-400" />
+                ))}
+              </div>
             </div>
           </div>
-          <div className=" flex items-center justify-between w-[120px]">
-            <Typography className=" text-[#5e5e5e]">
+          <div className=" flex gap-4 items-center justify-between w-max ">
+            <Typography className=" leading-none tracking-normal text-[#5e5e5e]">
               {keyboard?.brand}
             </Typography>
             <h4 className=" text-[#000000]">{keyboard?.price}</h4>
+            <h4>{keyboard?.available_quantity}</h4>
           </div>
         </CardBody>
       </Card>
