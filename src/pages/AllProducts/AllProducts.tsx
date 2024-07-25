@@ -11,7 +11,7 @@ const AllProducts = () => {
   const selector = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
   const { data, isLoading, isError } = useGetAllproductsQuery(selector);
-  console.log(data);
+  // console.log(data);
 
   if (isLoading) {
     return <Loading></Loading>;

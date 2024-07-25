@@ -7,9 +7,10 @@ import {
   useUpdateSingleProductMutation,
 } from "../../redux/features/productApi/productApi";
 import { toast } from "sonner";
+import { useRef } from "react";
 
 const Edit = ({ item }: any) => {
-  console.log(item);
+  const modalRef = useRef(null);
   const [updateProduct, result] = useUpdateSingleProductMutation();
   const { data } = useGetSingleProductQuery(item?._id);
 
@@ -24,6 +25,10 @@ const Edit = ({ item }: any) => {
       console.log(res);
       if (res) {
         toast("data updated");
+        // document.getElementById(`my_modal_${item?.id}`).close();
+        if (modalRef.current) {
+          modalRef.current.close();
+        }
       }
     } catch (error) {
       console.error(error);
@@ -42,6 +47,7 @@ const Edit = ({ item }: any) => {
           <MdEdit></MdEdit>
         </button>
         <dialog
+          ref={modalRef}
           id={`my_modal_${item._id}`}
           className="modal modal-bottom backdrop-blur-md duration-100 transition-all ease-in-out sm:modal-middle"
         >

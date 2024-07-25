@@ -9,13 +9,14 @@ import {
 import { useAppSelector } from "../../hook/hook";
 import FilterSmall from "../../utils/RawJs/index.js";
 import { useEffect, useState } from "react";
+import useDebounce from "../../utils/DeBounce/useDebounce.js";
 
 const AllProductSide = ({ dispatch }) => {
-  // const [minPrice, setMinprice] = useState(0);
-  // const [maxPrice, setMaxprice] = useState(1000);
-  // const [name, setName] = useState("");
-
+  const [searchVal, setSearchVal] = useState("");
   const selector = useAppSelector((state) => state.product);
+
+  const deBouncedVal = useDebounce(searchVal);
+
   console.log(selector);
 
   useEffect(() => {
@@ -26,7 +27,9 @@ const AllProductSide = ({ dispatch }) => {
     //   setMaxprice(selector?.maxPrice);
     //   setName(selector?.productName);
     // }
-  }, []);
+    console.log("debounce git");
+    dispatch(productName(deBouncedVal));
+  }, [deBouncedVal]);
 
   return (
     <>
@@ -48,7 +51,7 @@ const AllProductSide = ({ dispatch }) => {
         <div className="divider lg:block hidden"></div>
         <div className="mt-2">
           <Input
-            onChange={(event) => dispatch(productName(event.target.value))}
+            onChange={(event) => setSearchVal(event.target.value)}
             defaultValue={selector?.productName as string}
             variant="standard"
             label="Search"
