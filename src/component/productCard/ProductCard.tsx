@@ -17,28 +17,33 @@ const ProductCard = ({ keyboard }) => {
       <Card
         className={`card cursor-pointer mt-2 ${
           location.pathname === "/all-products"
-            ? "w-[280px]"
+            ? " w-[60vw] md:w-[40vw] h-[30vh] lg:w-[20vw] lg:h-[30vh]"
             : "w-[320px] lg:w-[350px]"
         } `}
       >
         <CardHeader
           color="blue-gray"
-          className=" relative h-[200px] overflow-hidden"
+          className=" relative h-[25vh] overflow-hidden"
         >
           <img
-            className=" h-full w-full object-cover"
+            className=" h-full w-full absolute top-0 left-0 object-center object-cover"
             src={keyboard?.image1}
             alt="card-image"
           />
           <img
-            className="bottom-img w-full h-full object-cover absolute top-0 left-0"
+            className="bottom-img w-full h-full object-center object-cover absolute top-0 left-0"
             src={keyboard?.image2}
             alt=""
           />
-          <button className="card-detail">
-            <Link to={`/all-products/details/${keyboard._id}`}>
+          <button className="card-detail mx-auto">
+            <Link
+              className=" flex items-center gap-1 justify-between"
+              to={`/all-products/details/${keyboard._id}`}
+            >
               <TiArrowForward></TiArrowForward>
-              see Details
+              <p className=" leading-none text-[2vw] lg:text-[1vw]">
+                see Details
+              </p>
             </Link>
           </button>
         </CardHeader>
@@ -47,7 +52,7 @@ const ProductCard = ({ keyboard }) => {
             <Typography
               variant="h5"
               color="blue-gray"
-              className="mb-1 font-semibold text-[#1a1a1a]"
+              className="mb-1 text-[2.8vw] md:text-[2vw] lg:text-[1.1vw] leading-none font-semibold text-[#1a1a1a]"
             >
               {keyboard?.title}
             </Typography>

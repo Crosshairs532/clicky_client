@@ -12,12 +12,11 @@ import {
 } from "../../redux/features/productApi/cartSlice";
 import { Link } from "react-router-dom";
 
-const CartDetails = ({ cartRef }) => {
+const CartDetails = ({ cartRef }: any) => {
   const cartContainer = useRef(null);
   const cartClose = useRef(null);
   const { cartProducts, price } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-  console.log(cartProducts);
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
     tl.to(cartContainer.current, {
@@ -40,8 +39,16 @@ const CartDetails = ({ cartRef }) => {
     dispatch(totalItem());
     cartRef.current.addEventListener("click", handleOpenCart);
     cartClose?.current.addEventListener("click", handleCloseCart);
-  }, [cartRef]);
+  }, [cartRef, cartClose]);
 
+  // useEffect(() => {
+  //   dispatch(totalItem());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(totalItem()); // Recalculate total on cart changes
+  // }, [cartProducts, dispatch]);
+  console.log(cartProducts);
   return (
     <div
       ref={cartContainer}
@@ -53,82 +60,85 @@ const CartDetails = ({ cartRef }) => {
       >
         <ImCross />
       </div>
-      <div className=" h-full  flex mt-10 justify-between flex-col gap-4 p-4">
-        {cartProducts.length > 0 ? (
-          cartProducts?.map((product) => (
-            <>
-              <div className=" space-y-2 px-4 py-2 bg-[#ffffff] rounded-xl">
-                <div className=" flex items-center justify-between">
-                  <h1 className=" text-xl">{product.title}</h1>
-                  <button
-                    onClick={() => {
-                      dispatch(deleteItem(product.id));
-                      dispatch(totalItem());
-                    }}
-                  >
-                    <CiTrash size={25} />
-                  </button>
-                </div>
-                <div className=" w-[15%] border-2 justify-between flex items-center ">
-                  <button
-                    onClick={() => {
-                      dispatch(plus(product.id));
-                      dispatch(totalItem());
-                    }}
-                    className=" "
-                  >
-                    <AiOutlinePlus size={20} />
-                  </button>
-                  <input
-                    className=" text-center w-5 "
-                    value={product?.total}
-                    type="text"
-                  />
-                  <button
-                    onClick={() => {
-                      dispatch(minus(product.id));
-                      dispatch(totalItem());
-                    }}
-                    className=""
-                  >
-                    <AiOutlineMinus size={20} />
-                  </button>
-                </div>
+
+      {cartProducts?.length > 0 ? (
+        <div className=" h-full flex flex-col mt-10 gap-2 p-4">
+          {cartProducts?.map((product, ind) => (
+            <div
+              key={ind}
+              className=" h-max space-y-2 px-4 py-2 bg-[#ffffff] rounded-xl"
+            >
+              <div className=" flex items-center justify-between">
+                <h1 className=" text-xl">{product?.title}</h1>
+                <button
+                  onClick={() => {
+                    dispatch(deleteItem(product?.id));
+                    dispatch(totalItem());
+                  }}
+                >
+                  <CiTrash size={25} />
+                </button>
               </div>
-            </>
-          ))
-        ) : (
-          <div className=" w-full space-y-4 h-full flex flex-col justify-center items-center">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              <div className=" w-[15%] border-2 justify-between flex items-center ">
+                <button
+                  onClick={() => {
+                    dispatch(plus(product?.id));
+                    dispatch(totalItem());
+                  }}
+                  className=" "
+                >
+                  <AiOutlinePlus size={20} />
+                </button>
+                <input
+                  className=" text-center w-5 "
+                  value={product?.total}
+                  type="text"
                 />
-              </svg>
+                <button
+                  onClick={() => {
+                    dispatch(minus(product.id));
+                    dispatch(totalItem());
+                  }}
+                  className=""
+                >
+                  <AiOutlineMinus size={20} />
+                </button>
+              </div>
             </div>
-            <h1 className="text-center text-2xl font-semibold">
-              No products in cart
-            </h1>
-            <button className=" bg-[#1a1a1a] px-9 py-4  text-[#f0f0f0]">
-              <Link to={"/all-products"}> start shopping</Link>
-            </button>
+          ))}
+        </div>
+      ) : (
+        <div className=" w-full space-y-4 h-full flex flex-col justify-center items-center">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
           </div>
-        )}
-      </div>
+          <h1 className="text-center text-2xl font-semibold">
+            No products in cart
+          </h1>
+          <button className=" bg-[#1a1a1a] px-9 py-4  text-[#f0f0f0]">
+            <Link to={"/all-products"}> start shopping</Link>
+          </button>
+        </div>
+      )}
+
       {cartProducts.length !== 0 && (
         <div className="w-full bottom-0 right-0 absolute h-[20%] bg-[#1a1a1a]">
           <Link to="/payment">
             <h1 className=" mt-5 flex justify-around px-5 py-2 bg-[#f0f0f0] rounded-lg">
-              CheckOut - $ {price.toFixed(2)}
+              CheckOut - $ {price?.toFixed(2)}
             </h1>
           </Link>
         </div>

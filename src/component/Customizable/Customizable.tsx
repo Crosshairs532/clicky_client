@@ -23,7 +23,6 @@ const Customizable = () => {
         end: "top -100%",
         scrub: 2,
         pin: true,
-        markers: true,
       },
     });
     gsap.from(infoRef.current, {
@@ -31,7 +30,6 @@ const Customizable = () => {
       scrollTrigger: {
         trigger: infoRef.current,
         scroller: "body",
-        markers: true,
         scrub: true,
         start: "top 50%",
         end: "top 0%",

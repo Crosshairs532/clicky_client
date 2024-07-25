@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
     totalItem: (state) => {
       let val = 0;
       let price = 0;
-      console.log(state.cartProducts);
+
       state.cartProducts.forEach((item) => {
         val += item?.total;
         price += val * item?.price;
@@ -38,7 +38,6 @@ export const cartSlice = createSlice({
 
       state.cartProducts = updatedCartProducts;
     },
-
     minus: (state, { payload }) => {
       const updatedCartProducts = state.cartProducts.map((item) =>
         item.id === payload
@@ -48,32 +47,29 @@ export const cartSlice = createSlice({
 
       state.cartProducts = updatedCartProducts;
     },
-
     deleteItem: (state, { payload }) => {
+      let val = 0;
+      let price = 0;
       console.log(payload);
-      const isExist = state.cartProducts.find(
-        (product) => payload === product.id
+      const newD = state.cartProducts.filter(
+        (product) => product.id != payload
       );
-      let afterDelete = [];
-      console.log(isExist);
-      if (isExist) {
-        afterDelete = state.cartProducts.map((item) =>
-          item.id === payload
-            ? {
-                ...item,
-                total: item.total > 0 ? item.total - 1 : 0,
-              }
-            : item
-        );
 
-        state.cartProducts = afterDelete;
-      }
+      console.log(newD);
+      state.cartProducts.forEach((item) => {
+        val += item?.total;
+        price += val * item?.price;
+      });
+      state.total = val;
+      state.price = price;
+      state.cartProducts = newD;
     },
     clearCart: (state) => {
       state.cartProducts = [];
       state.total = 0;
       state.price = 0;
     },
+    getCarProducts: (state) => {},
   },
 });
 

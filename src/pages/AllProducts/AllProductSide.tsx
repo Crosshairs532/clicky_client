@@ -8,14 +8,24 @@ import {
 } from "../../redux/features/productApi/productSlice";
 import { useAppSelector } from "../../hook/hook";
 import FilterSmall from "../../utils/RawJs/index.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const AllProductSide = ({ dispatch }) => {
+  // const [minPrice, setMinprice] = useState(0);
+  // const [maxPrice, setMaxprice] = useState(1000);
+  // const [name, setName] = useState("");
+
   const selector = useAppSelector((state) => state.product);
+  console.log(selector);
 
   useEffect(() => {
     FilterSmall.filter_sort();
     FilterSmall.close();
+    // if (selector) {
+    //   setMinprice(selector?.minPrice);
+    //   setMaxprice(selector?.maxPrice);
+    //   setName(selector?.productName);
+    // }
   }, []);
 
   return (
@@ -39,6 +49,7 @@ const AllProductSide = ({ dispatch }) => {
         <div className="mt-2">
           <Input
             onChange={(event) => dispatch(productName(event.target.value))}
+            defaultValue={selector?.productName as string}
             variant="standard"
             label="Search"
             placeholder="Search Products"
@@ -54,7 +65,7 @@ const AllProductSide = ({ dispatch }) => {
                 onChange={(event) => {
                   dispatch(minPrice(event.target.value));
                 }}
-                defaultValue={selector?.minPrice}
+                defaultValue={selector?.minPrice as number}
                 name="minPrice"
                 type="text"
                 className="grow"
@@ -69,7 +80,7 @@ const AllProductSide = ({ dispatch }) => {
                 type="text"
                 name="maxPrice"
                 className="grow"
-                defaultValue={selector?.maxPrice}
+                defaultValue={selector?.maxPrice as number}
                 placeholder={`1000`}
               />
             </label>

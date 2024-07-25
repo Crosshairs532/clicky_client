@@ -7,9 +7,6 @@ import Filter from "../../utils/filter/Filter";
 import FilterSmall from "../../utils/RawJs/index.js";
 const MainLayout = () => {
   const location = useLocation();
-  console.log(location.pathname);
-
-  const handleFilter = () => {};
 
   return (
     <div>

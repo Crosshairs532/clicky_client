@@ -18,9 +18,9 @@ const DetailsPage = () => {
   const { cartProducts } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    refetch();
-  }, []);
+  // useEffect(() => {
+  //   refetch();
+  // }, []);
 
   if (isLoading || isFetching) {
     return <Loading></Loading>;
@@ -69,7 +69,6 @@ const DetailsPage = () => {
       );
     }
 
-    console.log(cartProducts);
     dispatch(totalItem());
     return toast.success("product added", {
       position: "top-center",

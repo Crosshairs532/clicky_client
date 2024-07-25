@@ -8,7 +8,6 @@ import { ImCross } from "react-icons/im";
 import Cart from "../Cart/Cart";
 import Cartdetails from "../Cart/Cartdetails";
 import { useAppSelector } from "../../hook/hook";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP);
 
@@ -21,6 +20,9 @@ const Header = () => {
   const contactRef = useRef<HTMLDivElement>(null);
   const { cartProducts } = useAppSelector((state) => state.cart);
   const cartRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLDivElement>(null);
+  const fullRef = useRef<HTMLDivElement>(null);
   let items = [
     <h4
       ref={HomeRef}
@@ -81,10 +83,6 @@ const Header = () => {
     </h4>,
   ];
 
-  const menuRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef<HTMLDivElement>(null);
-  const fullRef = useRef<HTMLDivElement>(null);
-  console.log(closeRef, menuRef);
   useGSAP(() => {
     const menu = menuRef?.current as HTMLDivElement;
     const close = closeRef?.current as HTMLDivElement;
@@ -177,12 +175,13 @@ const Header = () => {
 
   useEffect(() => {
     console.log("loading");
-    if (cartProducts.length > 0) {
+    if (cartProducts?.length > 0) {
       window.addEventListener("beforeunload", (event) => {
         event.preventDefault();
       });
     }
-  }, []);
+  }, [cartProducts]);
+
   return (
     <div className=" container overflow-hidden py-4 m-auto bg-transparent">
       <nav className="  text-[white] navbar flex justify-between" id="nav">

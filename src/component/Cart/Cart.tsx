@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hook/hook";
 import { totalItem } from "../../redux/features/productApi/cartSlice";
 
-const Cart = ({ cartRef }) => {
+const Cart = ({ cartRef }: any) => {
   const dispatch = useAppDispatch();
-
   const { total } = useAppSelector((state) => state.cart);
   useEffect(() => {
     dispatch(totalItem());

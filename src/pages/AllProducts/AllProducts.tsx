@@ -38,7 +38,7 @@ const AllProducts = () => {
       container "
       >
         <AllProductSide dispatch={dispatch}></AllProductSide>
-        <div className=" mb-10 mt-[50px]  products lg:w-[70%] place-items-center grid md:grid-cols-2 gap-y-6 grid-cols-1 gap-2 lg:grid-cols-3 ">
+        <div className=" mb-10 mt-[50px] products lg:w-[70%] place-items-center grid md:grid-cols-2  grid-cols-1 gap-[4vw] lg:grid-cols-3 ">
           {data ? (
             data?.map(
               (keyboard: TProduct) =>

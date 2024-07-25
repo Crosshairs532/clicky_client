@@ -6,7 +6,6 @@ import Loading from "../../utils/Loading/Loading";
 import { TProduct } from "../../Types/Types";
 const TopKeyboard = () => {
   const { data, isLoading, isFetching } = useGetAllproductsQuery(undefined);
-  console.log(data);
   if (isLoading || isFetching || !data) {
     return <Loading></Loading>;
   }
@@ -18,7 +17,7 @@ const TopKeyboard = () => {
           <h1 className=" text-6xl text-[#1a1a1a]">Best Selling</h1>
           <p className=" text-[#5e5e5e]">Our Most Popular Products</p>
         </div>
-        <div className=" gap-y-3 grid place-items-center mg:grid-cols-2 grid-cols-1 lg:grid-cols-3">
+        <div className=" gap-[1vw] grid place-items-center mg:grid-cols-2 grid-cols-1 lg:grid-cols-3">
           {data?.slice(0, 6).map((keyboard: TProduct) => (
             <ProductCard key={keyboard?._id} keyboard={keyboard}></ProductCard>
           ))}
