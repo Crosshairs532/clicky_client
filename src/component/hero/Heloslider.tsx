@@ -1,14 +1,13 @@
-import * as React from "react";
-import "../../styles/styles.css";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
 const Heloslider = (slider) => {
   let timeout: ReturnType<typeof setTimeout>;
   let mouseOver = false;
+
   function clearNextTimeout() {
     clearTimeout(timeout);
   }
+
   function nextTimeout() {
     clearTimeout(timeout);
     if (mouseOver) return;
@@ -16,6 +15,7 @@ const Heloslider = (slider) => {
       slider.next();
     }, 2000);
   }
+
   slider.on("created", () => {
     slider.container.addEventListener("mouseover", () => {
       mouseOver = true;
@@ -27,6 +27,7 @@ const Heloslider = (slider) => {
     });
     nextTimeout();
   });
+
   slider.on("dragStarted", clearNextTimeout);
   slider.on("animationEnded", nextTimeout);
   slider.on("updated", nextTimeout);
