@@ -35,17 +35,18 @@ const ProductCard = ({ keyboard }) => {
             src={keyboard?.image2}
             alt=""
           />
-          <button className="card-detail mx-auto">
-            <Link
-              className=" flex items-center gap-1 justify-between"
-              to={`/all-products/details/${keyboard._id}`}
-            >
+
+          <Link
+            className=" flex items-center gap-1 justify-between"
+            to={`/all-products/details/${keyboard._id}`}
+          >
+            <button className="card-detail mx-auto">
               <TiArrowForward></TiArrowForward>
               <p className=" leading-none text-[2vw] lg:text-[1vw]">
                 see Details
               </p>
-            </Link>
-          </button>
+            </button>
+          </Link>
         </CardHeader>
         <CardBody className=" px-2 py-4">
           <div className=" flex items-center justify-between">

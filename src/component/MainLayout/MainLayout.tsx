@@ -12,7 +12,7 @@ const MainLayout = () => {
     <div>
       <Toaster />
       <div
-        className={`bg-[#1a1a1a] ${
+        className={`bg-[#1a1a1a]  ${
           location.pathname === "/"
             ? "mix-blend-multiply md:min-h-screen min-h-[60vh] lg:min-h-screen"
             : ""

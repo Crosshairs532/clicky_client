@@ -82,6 +82,11 @@ a.active {
 .card:hover .bottom-img {
   opacity: 1;
 }
+
+.card:hover .card-detail {
+  opacity: 1;
+  transform: translateX(150%);
+}
 .card-detail {
   transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
   transform: translateX(400px);
@@ -97,11 +102,6 @@ a.active {
   padding: 20px 5px;
   width: 100px;
   height: 20px;
-}
-
-.card:hover .card-detail {
-  opacity: 1;
-  transform: translateX(150%);
 }
 
 .popular {

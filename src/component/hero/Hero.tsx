@@ -40,6 +40,7 @@ export default function Hero() {
           delay: 3000,
           disableOnInteraction: false,
         }}
+        loop
         pagination={{
           dynamicBullets: true,
         }}
