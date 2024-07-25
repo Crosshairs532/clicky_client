@@ -9,6 +9,7 @@ import {
 import { toast } from "sonner";
 
 const Edit = ({ item }: any) => {
+  console.log(item);
   const [updateProduct, result] = useUpdateSingleProductMutation();
   const { data } = useGetSingleProductQuery(item?._id);
 
@@ -65,6 +66,32 @@ const Edit = ({ item }: any) => {
                   {...register("brand", { required: true })}
                 />
                 {errors.Brand && <span>This field is required</span>}
+                <input
+                  className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
+                  type="text"
+                  placeholder={item?.available_quantity}
+                  defaultValue={item?.available_quantity}
+                  {...register("available_quantity", { required: true })}
+                />
+                <input
+                  className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
+                  type="text"
+                  defaultValue={item?.image1}
+                  {...register("image1", { required: true })}
+                />
+                <input
+                  className="transition-all duration-300 ease-in-out focus:outline-none border-b-2 focus:border-b-2 focus:border-blue-400  border-gray-300 px-4 py-2 "
+                  defaultValue={item?.image2}
+                  type="text"
+                  {...register("image2", { required: true })}
+                />
+
+                <textarea
+                  className=" outline-1 border-2 px-2 py-4 w-full lg:col-span-2"
+                  defaultValue={item?.description}
+                  placeholder="description"
+                  {...register("description", { required: true })}
+                />
               </div>
 
               <button

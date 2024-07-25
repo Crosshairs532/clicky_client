@@ -6,6 +6,7 @@ const Add = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [add, result] = useAddProductMutation();
@@ -19,6 +20,7 @@ const Add = () => {
     console.log(newData);
     try {
       const result = await add(newData);
+      reset();
       console.log(result);
     } catch (error) {
       console.error(error);
@@ -38,6 +40,7 @@ const Add = () => {
         <div className="modal-box py-10 mt-16">
           <form onSubmit={handleSubmit(onSubmit)}>
             <button
+              type="button"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={() =>
                 document.getElementById("add_product_modal").close()
