@@ -61,7 +61,7 @@ const Payment = () => {
                   Shipping Info
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-4">
                   <input
                     name="name"
                     type="text"
@@ -231,21 +231,25 @@ const Payment = () => {
             <h2 className="text-2xl font-bold text-gray-800">Summary</h2>
 
             <div className="mt-8 divide-y bg-[#f0f0f0]">
-              {cartProducts.map((product, index) => (
-                <div key={index} className="flex flex-col p-4 bg-white">
-                  <div className="flex justify-between items-center">
-                    <h2 className="text-lg font-bold text-gray-700">
-                      {product.title}
-                    </h2>
-                    <h2 className="text-lg font-bold text-gray-700">
-                      ${product.price}
-                    </h2>
+              <div>
+                {cartProducts.map((product, index) => (
+                  <div
+                    key={index}
+                    className="flex border-b-2 flex-col py-2 bg-white"
+                  >
+                    <div className="flex justify-between gap-2 items-center">
+                      <span className=" text-gray-700">{index + 1}.</span>
+                      <h2 className="text-lg leading-none font-clicky font-medium text-gray-700">
+                        {product.title}
+                      </h2>
+                      <h2 className="text-lg font-clicky font-bold text-gray-700">
+                        ${product.price}
+                      </h2>
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-400">{product.description}</p>
-                </div>
-              ))}
-
-              <div className="p-4">
+                ))}
+              </div>
+              <div className="p-4 mt-2">
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-gray-700">Total:</span>
                   <span className="font-semibold text-gray-700">
