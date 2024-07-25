@@ -66,17 +66,20 @@ const Payment = () => {
                     name="name"
                     type="text"
                     placeholder="Name"
+                    required
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
                     name="email"
                     type="email"
+                    required
                     placeholder="Email address"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
                     name="street"
                     type="text"
+                    required
                     placeholder="Street address"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
@@ -84,11 +87,13 @@ const Payment = () => {
                     name="city"
                     type="text"
                     placeholder="City"
+                    required
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                   <input
                     name="state"
                     type="text"
+                    required
                     placeholder="State"
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
@@ -96,6 +101,7 @@ const Payment = () => {
                     name="postal"
                     type="number"
                     placeholder="Postal code"
+                    required
                     className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                   />
                 </div>
@@ -164,6 +170,7 @@ const Payment = () => {
                     <>
                       <div className="mt-8">
                         <input
+                          required
                           type="text"
                           placeholder="Cardholder's Name"
                           className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600 w-full"
@@ -187,6 +194,7 @@ const Payment = () => {
                           />
                         </svg>
                         <input
+                          required
                           type="number"
                           placeholder="Card Number"
                           className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600 w-full"
@@ -196,11 +204,13 @@ const Payment = () => {
                       <div className="grid grid-cols-2 gap-4 mt-4">
                         <input
                           type="text"
+                          required
                           placeholder="EXP."
                           className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                         />
                         <input
                           type="text"
+                          required
                           placeholder="CVV"
                           className="px-3 py-2 bg-white text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600"
                         />

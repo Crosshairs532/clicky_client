@@ -17,8 +17,7 @@ const AllProductSide = ({ dispatch }) => {
 
   const deBouncedVal = useDebounce(searchVal);
 
-  console.log(selector);
-
+  console.log(deBouncedVal);
   useEffect(() => {
     FilterSmall.filter_sort();
     FilterSmall.close();

@@ -1,6 +1,5 @@
-import React from "react";
 import { SiClickup } from "react-icons/si";
-import { Link, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -35,10 +34,10 @@ const Footer = () => {
               target="_blank"
               href="https://www.linkedin.com/in/md-samsul-arefin/"
             >
-              <FaGithub size={20}></FaGithub>
+              <FaLinkedinIn size={20}></FaLinkedinIn>
             </a>
             <a target="_blank" href="https://github.com/Crosshairs532">
-              <FaLinkedinIn size={20}></FaLinkedinIn>
+              <FaGithub size={20}></FaGithub>
             </a>
           </div>
         </nav>

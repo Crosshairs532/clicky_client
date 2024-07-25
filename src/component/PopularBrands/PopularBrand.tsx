@@ -37,7 +37,7 @@ const PopularBrand = () => {
       <h2 className=" text-[#1a1a1a]  text-center font-semibold text-[2.5vw]">
         Premium Keyboards
       </h2>
-      <p className=" text-wrap w-[50%] m-auto text-[#5e5e5e] text-center">
+      <p className=" text-wrap w-[50vw] m-auto text-[#5e5e5e] text-center">
         Our Freebird Collection brings you high quality mechanical keyboards in
         60%, 75% and TKL layouts. The Freebird keyboards boasts a premium
         aluminum case, stylish designs and are hot swappable. Available in

@@ -22,7 +22,7 @@ export default function App() {
     <>
       <div className=" container mx-auto min-h-[80vh] my-[50px] lg:my-[100px]">
         <div className=" space-y-4 mb-[70px] lg:mb-[100px]">
-          <h1 className=" popular text-center font-semibold text-9xl text-[#1a1a1a]">
+          <h1 className=" popular text-center font-semibold text-[10vw] text-[#1a1a1a]">
             Reviews
           </h1>
           <p className=" text-center text-xl text-[#5e5e5e]">
