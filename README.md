@@ -56,11 +56,23 @@ This e-commerce site allows users to browse, view, and purchase mechanical keybo
    API_KEY=your_api_key_here
    ```
 2. Run the development server:
+
    ```bash
    npm run dev
    # or
    yarn dev
    ```
+
    > [!IMPORTANT]
+
    1. Ensure MongoDB is running and accessible.
    2. Configure environment variables in the .env file.
+
+### Usage
+
+- **Homepage**: View featured products and explore services.
+- **Products** Page: Search and filter products.
+- **Product** Details Page: View detailed information and add products to the cart.
+- **Cart** Page: Manage cart items and proceed to checkout.
+- **Checkout** Page: Complete purchase using available payment methods.
+- **Product** Management/Dashboard Page: Manage product listings from the admin panel.
