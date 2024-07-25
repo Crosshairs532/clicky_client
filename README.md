@@ -1,4 +1,4 @@
-# E-Commerce Website for Mechanical Keyboards
+# Mechanical Keyboards Shop
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This project is a modern e-commerce website exclusively designed for mechanical 
 
 ## Project Description
 
-This e-commerce site allows users to browse, view, and purchase mechanical keyboards. It includes easy product browsing, detailed product pages, a smooth cart system, and a powerful admin dashboard for managing products. Additional features include a customizable user interface, secure payment integration, and user-friendly navigation.
+This e-commerce site allows users to browse, view, and purchase mechanical keyboards. It includes easy product browsing, detailed product pages, a smooth cart system, and a powerful dashboard for managing products. Additionally there is a payment system.
 
 ## Features
 
@@ -15,7 +15,7 @@ This e-commerce site allows users to browse, view, and purchase mechanical keybo
 - **Product Details Page**: Detailed product view and add-to-cart functionality.
 - **Cart Page**: Manage cart items and proceed to checkout.
 - **Checkout Page**: Collect user details and handle payments.
-- **Product Management/Dashboard Page**: Admin panel for managing products.
+- **Product Management/Dashboard Page**: Dashboard for managing products.
 - **About Us Page**: Creative and animated overview of the team and mission.
 - **Contact Us Page**: Detailed contact information and user feedback options.
 
@@ -23,7 +23,7 @@ This e-commerce site allows users to browse, view, and purchase mechanical keybo
 
 - **Frontend**: React, Redux, TypeScript, Vite, RTK Query, GSAP, Framer Motion.
 - **Backend**: Node.js, Express, MongoDB, Mongoose, Zod.
-- **Payment Integration**: Stripe (optional), Cash on Delivery.
+- **Payment Integration**: Stripe( it will be implemented)
 
 ## Installation Guideline
 
@@ -40,3 +40,27 @@ This e-commerce site allows users to browse, view, and purchase mechanical keybo
    git clone https://github.com/yourusername/your-repo.git
    cd your-repo
    ```
+2. Install dependencies:
+   ```zsh
+   npm install
+   # or
+   yarn install
+   ```
+
+### configuration
+
+1. Create a .env file in the root directory and add configuration variables:
+   ```dotnetcli
+   PORT=3000
+   DB_URL=your_db_connection_uri
+   API_KEY=your_api_key_here
+   ```
+2. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   [!IMPORTANT]
+   1. Ensure MongoDB is running and accessible.
+   2. Configure environment variables in the .env file.
