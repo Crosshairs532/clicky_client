@@ -5,12 +5,13 @@ import "swiper/css/pagination";
 import "swiper/css/bundle";
 import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import { useLocation } from "react-router-dom";
-
+// import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const [count, setCount] = useState([]);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  // const [activeSlide, setActive] = useState(0);
+  // const slideContainers = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,15 +20,24 @@ export default function Hero() {
       .then((data) => setCount(data));
   }, []);
 
-  console.log(count);
+  // useEffect(() => {
+  //   console.log(slideContainers.current, "slide", activeSlide);
+  //   if (slideContainers.current) {
+  //     console.log("sliding");
+  //     gsap.from(slideContainers.current.querySelectorAll(".line h1"), {
+  //       y: 150,
+  //       stagger: 0.3,
+  //       duration: 1,
+  //       ease: "power3.out",
+  //     });
+  //   }
+  // }, [activeSlide, slideContainers]);
 
   return (
-    <>
+    <div className="container transition-all overflow-hidden h-[40vh] md:h-[60vh] lg:h-[80vh] mx-auto rounded-xl">
       <Swiper
-        onSlideChange={() => console.log("slide change")}
-        loop={true}
         autoplay={{
-          delay: 2000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -35,44 +45,44 @@ export default function Hero() {
         }}
         modules={[Pagination, Autoplay, EffectFade]}
         effect="fade"
-        className=" mySwiper container mx-auto rounded-xl"
+        className=" mySwiper "
       >
         {count.map((car, ind) => (
           <SwiperSlide key={ind}>
             <div
-              key={ind}
-              className=" rounded-xl h-[30vh] md:h-[50vh] lg:h-[80vh] w-full"
+              // ref={slideContainers}
+              className=" relative overflow-hidden rounded-xl h-full w-full"
             >
-              <div className="relative h-full w-full">
+              <div className="relative  h-full w-full">
                 <div className="img-info left-[50px] z-10 absolute">
-                  <div className="line overflow-hidden">
-                    <h1 className="font-clicky text-[6vw] font-semibold text-white">
+                  <div className=" mt-[2vw] line overflow-hidden">
+                    <h1 className=" w-fit text-left transition-all duration-200 font-clicky text-[6vw] leading-none font-semibold text-white">
                       {car.title}
                     </h1>
                   </div>
-                  <div className="line overflow-hidden">
-                    <h1 className="font-clicky text-3xl tracking-wide text-white">
+                  <div className=" mt-[2vw] line overflow-hidden">
+                    <h1 className=" w-fit text-left font-clicky text-[3vw] lg:text-[2vw] leading-none tracking-wide text-white">
                       {car.short_functionality}
                     </h1>
                   </div>
                 </div>
-                <div className="image -z-10">
-                  <img
-                    className="w-full h-full object-center object-cover"
-                    src={car.image}
-                    alt={car.title}
-                  />
-                </div>
+
+                <img
+                  className="  md:w-full md:h-full lg:w-full lg:h-full -z-10 object-center object-cover"
+                  src={car.image}
+                  alt={car.title}
+                />
+
                 <div className="line overflow-hidden">
-                  <button className="absolute right-9 bottom-[40px] px-4 py-2 z-20 bg-white text-black rounded-full">
+                  <h1 className=" leading-none absolute right-9 bottom-[40px] px-4 py-2 z-20 bg-white text-black rounded-full">
                     Browse Collection
-                  </button>
+                  </h1>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 }
