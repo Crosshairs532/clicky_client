@@ -61,6 +61,6 @@ This e-commerce site allows users to browse, view, and purchase mechanical keybo
    # or
    yarn dev
    ```
-   [!IMPORTANT]
+   > [!IMPORTANT]
    1. Ensure MongoDB is running and accessible.
    2. Configure environment variables in the .env file.
